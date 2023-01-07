@@ -3,6 +3,9 @@ on:
   push:
     branches:
       - master
+      - develop
+      - feature*
+      - hotfix*
   pull_request:
 
 jobs:
@@ -11,10 +14,10 @@ jobs:
     name: Check terraform file are formatted correctly
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@master
 
       - name: terraform fmt
-        uses: dflook/terraform-fmt-check@v1
+        uses: dflook/terraform-fmt-check@v1.31.1
 
   validate:
     runs-on: ubuntu-latest
@@ -23,7 +26,7 @@ jobs:
       TERRAFORM_CLOUD_TOKENS: app.terraform.io=${{ secrets.TF_CLOUD_TOKEN }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@master
 
       - name: terraform validate
         uses: dflook/terraform-validate@v1.31.1
@@ -37,6 +40,6 @@ jobs:
         uses: actions/checkout@master
 
       - name: tfsec
-        uses: aquasecurity/tfsec-action@v1.0.0
+        uses: aquasecurity/tfsec-action@v1.0.2
         # with:
         #   soft_fail: true
