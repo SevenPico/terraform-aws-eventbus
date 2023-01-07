@@ -1,0 +1,42 @@
+name: lint
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  check_format:
+    runs-on: ubuntu-latest
+    name: Check terraform file are formatted correctly
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: terraform fmt
+        uses: dflook/terraform-fmt-check@v1
+
+  validate:
+    runs-on: ubuntu-latest
+    name: Validate terraform
+    env:
+      TERRAFORM_CLOUD_TOKENS: app.terraform.io=${{ secrets.TF_CLOUD_TOKEN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: terraform validate
+        uses: dflook/terraform-validate@v1.31.1
+
+  tfsec:
+    name: tfsec
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone repo
+        uses: actions/checkout@master
+
+      - name: tfsec
+        uses: aquasecurity/tfsec-action@v1.0.0
+        # with:
+        #   soft_fail: true
