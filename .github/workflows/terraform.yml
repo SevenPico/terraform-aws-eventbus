@@ -6,6 +6,7 @@ on:
       - 'LICENSE'
       - 'NOTICE'
       - 'README.md'
+      - '.gitignore'
     branches:
       - master
       - develop
