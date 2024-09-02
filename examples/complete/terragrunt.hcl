@@ -6,7 +6,7 @@ locals {
   root_domain = "modules.thebrim.io"
 
   namespace   = "brim"
-  project     = "notifications"
+  project     = "eventbus"
   environment = ""
   stage       = basename(get_terragrunt_dir()) //
   domain_name = "${local.stage}.${local.project}.${local.root_domain}"
@@ -77,15 +77,10 @@ generate "providers" {
     required_providers {
       aws = {
         source  = "hashicorp/aws"
-        version = "~> 4"
+        version = "~> 5"
       }
-www
       local = {
         source  = "hashicorp/local"
-      }
-      acme = {
-        source  = "vancluever/acme"
-        version = "~> 2.8.0"
       }
     }
   }
@@ -94,8 +89,5 @@ www
     region  = "${local.region}"
   }
 
-  provider "acme" {
-    server_url = "https://acme-v02.api.letsencrypt.org/directory"
-  }
   EOF
 }
