@@ -1,5 +1,6 @@
-
 module "eventbus" {
-  source        = "../../"
+  source  = "../../"
+  context = module.context.tags
+
   eventbus_name = "domain"
 }

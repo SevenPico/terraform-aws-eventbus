@@ -24,11 +24,11 @@ variable "eventbus_name" {
 }
 
 variable "kms_key_identifier" {
-  type = string
+  type    = string
   default = ""
 }
 
 variable "event_source_name" {
-  type = string
+  type    = string
   default = ""
 }
