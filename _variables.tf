@@ -19,3 +19,6 @@
 ##  This file contains code written only by SevenPico, Inc.
 ## ----------------------------------------------------------------------------
 
+variable "eventbus_name" {
+  type = string
+}
