@@ -22,3 +22,13 @@
 variable "eventbus_name" {
   type = string
 }
+
+variable "kms_key_identifier" {
+  type = string
+  default = ""
+}
+
+variable "event_source_name" {
+  type = string
+  default = ""
+}

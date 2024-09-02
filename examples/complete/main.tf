@@ -1,5 +1,5 @@
 
 module "eventbus" {
-  source = "../../"
+  source        = "../../"
   eventbus_name = "domain"
 }
