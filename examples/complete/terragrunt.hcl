@@ -79,7 +79,6 @@ generate "providers" {
         source  = "hashicorp/aws"
         version = "~> 4"
       }
-www
       local = {
         source  = "hashicorp/local"
       }
