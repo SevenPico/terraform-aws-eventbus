@@ -17,7 +17,7 @@ resource "aws_cloudwatch_event_bus" "event_bus" {
 }
 
 resource "aws_cloudwatch_event_bus_policy" "event_bus_policy" {
-  count =  module.context.enabled && var.policy_document != null ? 1 : 0
+  count          = module.context.enabled && var.policy_document != null ? 1 : 0
   policy         = var.policy_document
   event_bus_name = try(aws_cloudwatch_event_bus.event_bus[0].name, "")
 }

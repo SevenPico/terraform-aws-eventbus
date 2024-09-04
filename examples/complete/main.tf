@@ -6,11 +6,30 @@ module "example_context" {
   attributes = []
 }
 
+data "aws_iam_policy_document" "eventbus_policy" {
+  count = module.example_context.enabled ? 1 : 0
+  statement {
+    sid    = "DevAccountAccess"
+    effect = "Allow"
+    actions = [
+      "events:PutEvents",
+    ]
+    resources = [
+      "arn:aws:events:${local.arn_prefix}:${local.account_id}:event-bus/default"
+    ]
+
+    principals {
+      type        = "AWS"
+      identifiers = [local.account_id]
+    }
+  }
+}
+
 module "eventbus" {
   source  = "../../"
   context = module.example_context.self
 
+  eventbus_name      = "domain"
   kms_key_identifier = module.eventbus_kms_key.key_arn
-  policy_document = try(data.aws_iam_policy_document.eventbus_kms_key_policy[0].json, "")
-  eventbus_name = "domain"
+  policy_document    = try(data.aws_iam_policy_document.eventbus_policy[0].json, "")
 }
