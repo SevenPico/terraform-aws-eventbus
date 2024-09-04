@@ -23,7 +23,7 @@ module "eventbus_kms_key" {
 
 module "eventbus" {
   source  = "../../"
-  context = module.context.tags
+  context = module.example_context.self
 
   kms_key_identifier = module.eventbus_kms_key.key_arn
   eventbus_name = "domain"

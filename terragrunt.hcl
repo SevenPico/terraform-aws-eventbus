@@ -6,7 +6,7 @@ locals {
   root_domain = "modules.thebrim.io"
 
   namespace   = "brim"
-  project     = "notifications"
+  project     = "eventbus"
   environment = ""
   stage       = basename(get_terragrunt_dir()) //
   domain_name = "${local.stage}.${local.project}.${local.root_domain}"
