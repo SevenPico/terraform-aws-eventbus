@@ -15,7 +15,7 @@ data "aws_iam_policy_document" "kms_policy" {
     ]
     resources = ["*"]
     condition {
-      test     = "StringEquals"
+      test     = "StringLike"
       variable = "aws:SourceArn"
       values   = ["arn:aws:events:${local.region}:${local.account_id}:event-bus/*"]
     }
