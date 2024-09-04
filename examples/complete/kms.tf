@@ -1,6 +1,16 @@
-
 data "aws_iam_policy_document" "kms_policy" {
   count = module.example_context.enabled ? 1 : 0
+  statement {
+    sid    = "RootUserPermission"
+    effect = "Allow"
+    principals {
+      type        = "AWS"
+      identifiers = ["${local.arn_prefix}:iam::${local.account_id}:root"]
+    }
+    actions   = ["kms:*"]
+    resources = ["*"]
+  }
+
   statement {
     effect = "Allow"
     principals {
