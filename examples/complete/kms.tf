@@ -1,5 +1,6 @@
 
 data "aws_iam_policy_document" "kms_policy" {
+  count = module.example_context.enabled ? 1 : 0
   statement {
     effect = "Allow"
     principals {
@@ -32,5 +33,5 @@ module "eventbus_kms_key" {
   description              = "KMS key for ${module.example_context.id}"
   key_usage                = "ENCRYPT_DECRYPT"
   multi_region             = false
-  policy                   = ""
+  policy                   = try(data.aws_iam_policy_document.kms_policy[0].json, '')
 }
