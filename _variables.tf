@@ -32,6 +32,6 @@ variable "kms_key_identifier" {
 
 variable "event_source_name" {
   type    = string
-  default = ""
+  default = null
   description = "(Optional) The partner event source that the new event bus will be matched with. Must match eventbus_name."
 }
