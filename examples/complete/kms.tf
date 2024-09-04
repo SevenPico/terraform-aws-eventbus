@@ -13,6 +13,7 @@ module "eventbus_kms_key" {
 }
 
 data "aws_iam_policy_document" "eventbus_kms_key_policy" {
+  count = module.example_context.enabled ? 1 : 0
   statement {
     effect = "Allow"
     actions = [

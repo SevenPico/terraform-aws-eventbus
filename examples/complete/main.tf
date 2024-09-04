@@ -11,6 +11,6 @@ module "eventbus" {
   context = module.example_context.self
 
   kms_key_identifier = module.eventbus_kms_key.key_arn
-  policy_document = data.aws_iam_policy_document.eventbus_kms_key_policy.json
+  policy_document = try(data.aws_iam_policy_document.eventbus_kms_key_policy[0].json, "")
   eventbus_name = "domain"
 }
