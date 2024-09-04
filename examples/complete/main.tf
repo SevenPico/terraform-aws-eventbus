@@ -15,7 +15,7 @@ data "aws_iam_policy_document" "eventbus_policy" {
       "events:PutEvents",
     ]
     resources = [
-      "${local.arn_prefix}:events:${local.region}:${local.account_id}:event-bus/default"
+      "${local.arn_prefix}:events:${local.region}:${local.account_id}:event-bus/*"
     ]
 
     principals {
