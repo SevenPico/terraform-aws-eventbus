@@ -26,11 +26,12 @@ variable "eventbus_name" {
 
 variable "kms_key_identifier" {
   type    = string
-  default = "Optional) The identifier of the AWS KMS customer managed key for EventBridge to use, if you choose to use a customer managed key to encrypt events on this event bus. The identifier can be the key Amazon Resource Name (ARN), KeyId, key alias, or key alias ARN."
+  default = ""
+  description = "Optional) The identifier of the AWS KMS customer managed key for EventBridge to use, if you choose to use a customer managed key to encrypt events on this event bus. The identifier can be the key Amazon Resource Name (ARN), KeyId, key alias, or key alias ARN."
 }
 
 variable "event_source_name" {
   type    = string
-  description = ""
-  default = "(Optional) The partner event source that the new event bus will be matched with. Must match eventbus_name."
+  default = ""
+  description = "(Optional) The partner event source that the new event bus will be matched with. Must match eventbus_name."
 }
