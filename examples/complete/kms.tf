@@ -33,5 +33,5 @@ module "eventbus_kms_key" {
   description              = "KMS key for ${module.example_context.id}"
   key_usage                = "ENCRYPT_DECRYPT"
   multi_region             = false
-  policy                   = try(data.aws_iam_policy_document.kms_policy[0].json, '')
+  policy                   = try(data.aws_iam_policy_document.kms_policy[0].json, "")
 }
