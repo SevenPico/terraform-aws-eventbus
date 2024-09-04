@@ -35,3 +35,7 @@ variable "event_source_name" {
   default = null
   description = "(Optional) The partner event source that the new event bus will be matched with. Must match eventbus_name."
 }
+
+variable "policy_document" {
+  description = "(Optional) The text of the policy. For more information about building AWS IAM policy documents with Terraform, see the AWS IAM Policy Document Guide."
+}

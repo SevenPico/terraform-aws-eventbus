@@ -6,24 +6,11 @@ module "example_context" {
   attributes = []
 }
 
-module "eventbus_kms_key" {
-  source     = "registry.terraform.io/SevenPicoForks/kms-key/aws"
-  version    = "2.0.0"
-  context    = module.example_context.self
-  attributes = ["kms", "key"]
-
-  customer_master_key_spec = "SYMMETRIC_DEFAULT"
-  description              = "KMS key for ${module.example_context.id}"
-  key_usage                = "ENCRYPT_DECRYPT"
-  multi_region             = false
-  policy                   = ""
-}
-
-
 module "eventbus" {
   source  = "../../"
   context = module.example_context.self
 
   kms_key_identifier = module.eventbus_kms_key.key_arn
+  policy_document = data.aws_iam_policy_document.eventbus_kms_key_policy.json
   eventbus_name = "domain"
 }
