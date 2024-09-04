@@ -8,11 +8,7 @@ data "aws_iam_policy_document" "kms_policy" {
       identifiers = ["events.amazonaws.com"]
     }
     actions = [
-      "kms:GenerateDataKey",
-      "kms:Encrypt",
-      "kms:Decrypt",
-      "kms:DescribeKey",
-      "kms:ReEncrypt*"
+      "kms:*",
     ]
     resources = ["*"]
     condition {
