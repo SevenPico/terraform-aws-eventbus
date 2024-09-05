@@ -16,9 +16,7 @@ data "aws_iam_policy_document" "eventbus_policy" {
     actions = [
       "events:PutEvents",
     ]
-    resources = [
-      "${local.arn_prefix}:events:${local.region}:${local.account_id}:event-bus/*"
-    ]
+    resources = ["${local.arn_prefix}:events:${local.region}:${local.account_id}:event-bus/${local.eventbus_name}"]
 
     principals {
       type        = "AWS"
