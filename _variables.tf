@@ -21,7 +21,7 @@
 
 variable "eventbus_name" {
   type        = string
-  description = "(Required) The name of the new event bus. The names of custom event buses can't contain the / character. To create a partner event bus, ensure the name matches the event_source_name"
+  description = "(Required) The name of the new event bus. The names of custom event buses can't contain the / character. To create a partner event bus, ensure the name matches the event_source_name."
 }
 
 variable "kms_key_identifier" {

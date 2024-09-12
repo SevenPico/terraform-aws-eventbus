@@ -82,10 +82,6 @@ generate "providers" {
       local = {
         source  = "hashicorp/local"
       }
-      acme = {
-        source  = "vancluever/acme"
-        version = "~> 2.8.0"
-      }
     }
   }
 
@@ -93,8 +89,5 @@ generate "providers" {
     region  = "${local.region}"
   }
 
-  provider "acme" {
-    server_url = "https://acme-v02.api.letsencrypt.org/directory"
-  }
   EOF
 }
