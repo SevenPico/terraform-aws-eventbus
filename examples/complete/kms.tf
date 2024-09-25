@@ -7,7 +7,7 @@ data "aws_iam_policy_document" "kms_policy" {
       type        = "AWS"
       identifiers = ["${local.arn_prefix}:iam::${local.account_id}:root"]
     }
-    actions   = ["kms:*"]
+    actions   = ["kms:decrypt", "kms:generatedatakey", "kms:encrypt"]
     resources = ["*"]
   }
 
