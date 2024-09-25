@@ -7,7 +7,11 @@ data "aws_iam_policy_document" "kms_policy" {
       type        = "AWS"
       identifiers = ["${local.arn_prefix}:iam::${local.account_id}:root"]
     }
-    actions   = ["kms:decrypt", "kms:generatedatakey", "kms:encrypt"]
+    actions   = [
+      "kms:Decrypt",
+      "kms:GenerateDataKey",
+      "kms:Encrypt"
+    ]
     resources = ["*"]
   }
 
@@ -18,7 +22,9 @@ data "aws_iam_policy_document" "kms_policy" {
       identifiers = ["events.amazonaws.com"]
     }
     actions = [
-      "kms:decrypt", "kms:generatedatakey", "kms:encrypt"
+      "kms:Decrypt",
+      "kms:GenerateDataKey",
+      "kms:Encrypt"
     ]
     resources = ["*"]
     condition {
