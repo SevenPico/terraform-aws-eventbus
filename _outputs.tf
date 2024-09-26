@@ -19,3 +19,10 @@
 ##  This file contains code written only by SevenPico, Inc.
 ## ----------------------------------------------------------------------------
 
+output "event_bus_arn" {
+  value = try(aws_cloudwatch_event_bus.event_bus[0].arn, null)
+}
+
+output "event_bus_name" {
+  value = try(aws_cloudwatch_event_bus.event_bus[0].name, null)
+}

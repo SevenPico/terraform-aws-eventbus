@@ -19,3 +19,25 @@
 ##  This file contains code written only by SevenPico, Inc.
 ## ----------------------------------------------------------------------------
 
+variable "eventbus_name" {
+  type        = string
+  description = "(Required) The name of the new event bus. The names of custom event buses can't contain the / character. To create a partner event bus, ensure the name matches the event_source_name."
+}
+
+variable "kms_key_identifier" {
+  type        = string
+  default     = null
+  description = "Optional) The identifier of the AWS KMS customer managed key for EventBridge to use, if you choose to use a customer managed key to encrypt events on this event bus. The identifier can be the key Amazon Resource Name (ARN), KeyId, key alias, or key alias ARN."
+}
+
+variable "event_source_name" {
+  type        = string
+  default     = null
+  description = "(Optional) The partner event source that the new event bus will be matched with. Must match eventbus_name."
+}
+
+variable "policy_document" {
+  type        = string
+  default     = ""
+  description = "(Optional) The text of the policy. For more information about building AWS IAM policy documents with Terraform, see the AWS IAM Policy Document Guide."
+}

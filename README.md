@@ -1,2 +1,2 @@
-# terraform-template
-Template for Terraform modules
+# terraform-aws-eventbus
+Eventbus Module
