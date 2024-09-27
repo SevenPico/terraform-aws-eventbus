@@ -3,7 +3,7 @@ module "event_bus_context" {
   source     = "SevenPico/context/null"
   version    = "2.0.0"
   context    = module.context.self
-  attributes = ["eventbus"]
+  attributes = []
 }
 
 resource "aws_cloudwatch_event_bus" "event_bus" {
