@@ -33,6 +33,6 @@ variable "event_source_name" {
 
 variable "policy_document" {
   type        = string
-  default     = ""
+  default     = null
   description = "(Optional) The text of the policy. For more information about building AWS IAM policy documents with Terraform, see the AWS IAM Policy Document Guide."
 }
